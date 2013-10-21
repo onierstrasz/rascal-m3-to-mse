@@ -80,13 +80,34 @@ public set[loc] allFiles(loc proj) = { f | /file(loc f) := crawl(proj) };
 
 public set[loc] mseFiles(loc proj) = { f | f <- allFiles(proj), endsWith(f.path, ".mse")};
 
+/*
 public void parseFiles(loc proj) {
 	for (loc f <- mseFiles(proj)) {
 		println(f);
 		parse(#start[Famix], f);
 	}
 }
+*/
 
+@doc { Return true/false whether all files parse. }
+public bool parseFiles(set[loc] files, bool verbose=false) {
+	try
+		for (loc f <- files) {
+			if (verbose) println(f);
+			parse(#start[Famix], f);
+		}
+	catch :
+		return false;
+	return true;
+}
+
+private loc mse = |project://p2-SnakesAndLadders/snakes.mse|;
+test bool testSnakes() = parseFiles( { mse } );
+
+test bool testAmbiguity() {
+	pt = parse(#start[Famix], mse);
+	return !(/amb(_) := pt);
+}
 
 /*
 loc sp = |project://p2-SnakesAndLadders|;
