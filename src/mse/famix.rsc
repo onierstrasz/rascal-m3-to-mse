@@ -20,6 +20,21 @@ syntax Entity
       ")"
   ;
 
+syntax Attribute
+  = "(" AttributeName Value+ ")"
+  ;
+
+syntax Value
+  = String
+  | Boolean
+  | Number
+  | EntityRef
+  ;
+
+syntax AttributeName
+  = Identifier
+  ;
+
 syntax EntityName
   = Identifier
   ;
@@ -42,21 +57,6 @@ Are there other kinds of numbers?
 */
 syntax Number
   = ID
-  ;
-
-syntax Attribute
-  = "(" AttributeName Value+ ")"
-  ;
-
-syntax AttributeName
-  = Identifier
-  ;
-
-syntax Value
-  = String
-  | Boolean
-  | Number
-  | EntityRef
   ;
 
 /*

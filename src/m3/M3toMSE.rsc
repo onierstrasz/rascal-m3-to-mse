@@ -530,10 +530,10 @@ test bool testIsNotConstructor() = !isConstructor(leaveISquare);
 public bool isExternalMethod(M3 m, loc meth) = meth in externalMethods(m);
 test bool testExternalMethods() = isExternalMethod(snakes(), setList);
 
-@doc { Returns all classes of declared methods. }
+@doc { Returns all classes of declared methods minus declared classes (ie anon classes). }
 public set[loc] anonClasses(M3 m) =
 	{ getParent(m, meth) | meth <- methods(m) } - classes(m) - interfaces(m);
-
+// Is this a hack or what? (probably will change in M3)
 
 @doc { Returns count of Source Lines of Code for a method or other source entity. }
 public int sloc(M3 m, loc elt) {
