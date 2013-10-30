@@ -82,7 +82,8 @@ public set[loc] polymorphFields(M3 m) {
 test bool testCountClasses() = size(classes(snakes())) == 10;
 test bool testCountInterfaces() = size(interfaces(snakes())) == 1;
 
-private loc dieTestReached = |java+method://p2-SnakesAndLadders/snakes/DieTest/reached(int)|;
+// private loc dieTestReached = |java+method:///snakes/DieTest/reached(int)|;
+private loc dieTestReached = |java+method:///snakes/DieTest/reached(int)|;
 test bool testCheckMethodSize() = getMethodLOC(snakes(), dieTestReached) == 9;
 
 test bool testLookUpMethodSize() = locPerMethod(snakes())[dieTestReached] == 9;
@@ -102,11 +103,11 @@ test bool testAllClassesFound() {
 	return expected == actual;
 }
 
-private loc squareClass = |java+class://p2-SnakesAndLadders/snakes/Square|;
-private loc ladderClass = |java+class://p2-SnakesAndLadders/snakes/Ladder|;
-private loc snakeClass = |java+class://p2-SnakesAndLadders/snakes/Snake|;
-private loc squareIfc = |java+interface://p2-SnakesAndLadders/snakes/ISquare|;
-private loc snakePackage = |java+package://p2-SnakesAndLadders/snakes|;
+private loc squareClass = |java+class:///snakes/Square|;
+private loc ladderClass = |java+class:///snakes/Ladder|;
+private loc snakeClass = |java+class:///snakes/Snake|;
+private loc squareIfc = |java+interface:///snakes/ISquare|;
+private loc snakePackage = |java+package:///snakes|;
 
 test bool testCountSquareSubclasses() = size(subtypes(snakes(),squareClass)) == 4;
 test bool testCountISquareImplementations() = size(subtypes(snakes(),squareIfc)) == 5;
@@ -121,7 +122,7 @@ private TypeSymbol snakeClassTS = class(snakeClass,[]);
 
 test bool testGetTS() = getTypeSymbol(snakes(), snakeClass) == snakeClassTS;
 
-private loc squareField = |java+field://p2-SnakesAndLadders/snakes/Player/square|;
+private loc squareField = |java+field:///snakes/Player/square|;
 test bool testPolymorphFields() = polymorphFields(snakes()) == { squareField };
 
 /* === EOF === */

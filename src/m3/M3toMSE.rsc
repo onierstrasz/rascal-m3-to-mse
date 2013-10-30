@@ -239,11 +239,11 @@ private void appendParameters(loc file, M3 m) {
 /*
 TODO: Fix bug in invocations
 
-|java+constructor://p2-SnakesAndLadders/snakes/Square/Square(snakes.Game,int)|
+|java+constructor:///snakes/Square/Square(snakes.Game,int)|
 "called by"
-|java+variable://p2-SnakesAndLadders/snakes/Game/addSquares(int)/square|
+|java+variable:///snakes/Game/addSquares(int)/square|
 in method
-|java+method://p2-SnakesAndLadders/snakes/Game/addSquares(int)|
+|java+method:///snakes/Game/addSquares(int)|
 
 The code correctly finds the enclosing method (addSquares()) and gives it as the sender.
 When this is imported into Moose, however, the invoker is shown as nil.
@@ -598,24 +598,24 @@ private void reportPresence(value v, set[value] s, str d) {
 
 @memo public M3 snakes() = createM3FromEclipseProject(|project://p2-SnakesAndLadders|);
 
-private loc squareClass = |java+class://p2-SnakesAndLadders/snakes/Square|;
-private loc ladderClass = |java+class://p2-SnakesAndLadders/snakes/Ladder|;
-private loc snakeClass = |java+class://p2-SnakesAndLadders/snakes/Snake|;
-private loc squareIfc = |java+interface://p2-SnakesAndLadders/snakes/ISquare|;
-private loc snakePackage = |java+package://p2-SnakesAndLadders/snakes|;
-private loc squaresField = |java+field://p2-SnakesAndLadders/snakes/Game/squares|;
-private loc winnerField = |java+field://p2-SnakesAndLadders/snakes/Game/winner|;
-private loc gameClass = |java+class://p2-SnakesAndLadders/snakes/Game|;
-private loc playerClass = |java+class://p2-SnakesAndLadders/snakes/Player|;
-private loc listInterface = |java+interface://p2-SnakesAndLadders/java/util/List|;
-private loc squareConstructor = |java+constructor://p2-SnakesAndLadders/snakes/Square/Square(snakes.Game,int)|;
-private loc leaveISquare = |java+method://p2-SnakesAndLadders/snakes/ISquare/leave(snakes.Player)|;
+private loc squareClass = |java+class:///snakes/Square|;
+private loc ladderClass = |java+class:///snakes/Ladder|;
+private loc snakeClass = |java+class:///snakes/Snake|;
+private loc squareIfc = |java+interface:///snakes/ISquare|;
+private loc snakePackage = |java+package:///snakes|;
+private loc squaresField = |java+field:///snakes/Game/squares|;
+private loc winnerField = |java+field:///snakes/Game/winner|;
+private loc gameClass = |java+class:///snakes/Game|;
+private loc playerClass = |java+class:///snakes/Player|;
+private loc listInterface = |java+interface:///java/util/List|;
+private loc squareConstructor = |java+constructor:///snakes/Square/Square(snakes.Game,int)|;
+private loc leaveISquare = |java+method:///snakes/ISquare/leave(snakes.Player)|;
 
-private loc setSquare = |java+method://p2-SnakesAndLadders/snakes/Game/setSquare(int,snakes.ISquare)|;
-private loc squareParam = |java+parameter://p2-SnakesAndLadders/snakes/Game/setSquare(int,snakes.ISquare)/square|;
+private loc setSquare = |java+method:///snakes/Game/setSquare(int,snakes.ISquare)|;
+private loc squareParam = |java+parameter:///snakes/Game/setSquare(int,snakes.ISquare)/square|;
 
-private loc setList = |java+method://p2-SnakesAndLadders/java/util/List/set(int,E)|;
-private loc systemOut = |java+field://p2-SnakesAndLadders/java/lang/System/out|;
+private loc setList = |java+method:///java/util/List/set(int,E)|;
+private loc systemOut = |java+field:///java/lang/System/out|;
 
 private TypeSymbol playerTS = class(playerClass, []);
 private TypeSymbol listISquareTS = interface(listInterface, [interface(squareIfc, [])]);
