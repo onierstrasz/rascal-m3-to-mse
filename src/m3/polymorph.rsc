@@ -3,11 +3,33 @@ module m3::polymorph
 Load the Snakes and Ladders game into Rascal and perform some simple analyses.
 
 TO DO:
+- ***take abstract classes into account (@modifiers)***
+  - only count types as polymorph if they have >1 *concrete* implementation
+  - eg TextOverFlowHandle in JHD7 is monomorphic subclass of AbstractHandle
+- handle inner and anonymous classes as well!
+  - eg Alignment in JH6 is an inner class of AlignCommand with several anonymous subclasses
 - replace my utilities by library isInterface() etc
-- take abstract classes into account (@modifiers)
 - check which constructors are actually called (@invocations)
 - check for overrides! (no override => no real polymorphism)
 - for dataflow need to look at AST
+*/
+
+
+/*
+
+jhd7 = createM3FromEclipseProject(|project://JHotDraw751|);
+pt7 = polymorphTypes(jhd7);
+pf7 = polymorphFields(jhd7);
+
+ah = |java+class:///org/jhotdraw/draw/handle/AbstractHandle|;
+toh = |java+class:///org/jhotdraw/draw/handle/TextOverflowHandle|;
+afa = |java+class:///org/jhotdraw/app/action/edit/AbstractFindAction|;
+
+
+jhd6 = createM3FromEclipseProject(|project://jhotdraw60b1|);
+pt6 = polymorphTypes(jhd6);
+pf6 = polymorphFields(jhd6);
+
 */
 
 /* === IMPORTS ===*/
@@ -59,6 +81,11 @@ public int sloc(M3 m, loc elt) {
 
 /* === POLYMORPHISM DETECTION === */
 
+/*
+This currently does not correctly take abstract calsses into accpunt.
+A type is plymorph if there are >1 concrete implementations.
+Currently an abstract class is considered polymorph even if it has just 1 implementation.
+*/
 @doc { Return classes with subclasses and interfaces with >1 implementations. } 
 public set[loc] polymorphTypes(M3 m) {
 	set[loc] types = getDeclaredTypeHierarchy(m)<0>;
