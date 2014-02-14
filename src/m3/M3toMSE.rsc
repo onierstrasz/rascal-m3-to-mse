@@ -24,6 +24,8 @@ import String;
 import Node;
 import util::Benchmark;
 
+import m3::m3util;
+
 /* === MSE GENERATION === */
 
 /*
@@ -558,41 +560,6 @@ private str dropPathSuffix(str path, str suffix) {
 	return substring(path, 0, findLast(path, suffix));
 }
 test bool testDropPathSuffix() = dropPathSuffix("/a/b/c/d/e", "/") == "/a/b/c/d";
-
-/* === DEBUGGING === */
-
-@doc { Reports where a certain value is found in an M3 model. }
-public void whereIs(M3 m, value v) {
-	// module analysis::m3::Core
-	reportRelPresence(v, m@declarations, "m@declarations");
-	reportRelPresence(v, m@types, "m@types");
-	reportRelPresence(v, m@uses, "m@uses");
-	reportRelPresence(v, m@containment, "m@containment");
-	reportPresence(v, toSet(m@messages), "m@messages");
-	reportRelPresence(v, m@names, "m@names");
-	reportRelPresence(v, m@containment, "m@containment");
-	reportRelPresence(v, m@documentation, "m@documentation");
-	reportRelPresence(v, m@modifiers, "m@modifiers");
-	
-	// module lang::java::m3::Core
-	reportRelPresence(v, m@extends, "m@extends");
-	reportRelPresence(v, m@implements, "m@implements");
-	reportRelPresence(v, m@methodInvocation, "m@methodInvocation");
-	reportRelPresence(v, m@fieldAccess, "m@fieldAccess");
-	reportRelPresence(v, m@typeDependency, "m@typeDependency");
-	reportRelPresence(v, m@methodOverrides, "m@methodOverrides");
-}
-
-private void reportRelPresence(value v, rel[value, value] m, str d) {
-	reportPresence(v, m<0>, "<d>\<0\>");  
-	reportPresence(v, m<1>, "<d>\<1\>");  
-}	
-
-private void reportPresence(value v, set[value] s, str d) {
-	if (v in s) {
-		println("Found <v> in <d>");
-	}
-}
 
 /* === TEST FIXTURES === */
 

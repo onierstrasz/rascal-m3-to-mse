@@ -36,12 +36,15 @@ pf6 = polymorphFields(jhd6);
 
 import lang::java::jdt::m3::Core;
 import lang::java::m3::TypeHierarchy;
+
 import IO;
 import Set;
 import List;
 import Relation;
 import String;
 import util::ValueUI;
+
+import m3::m3util;
 
 /* === MODEL ENTITIES === */
 
