@@ -1,11 +1,23 @@
 
 module m3::m3util
 
-
 import lang::java::jdt::m3::Core;
 import lang::java::m3::TypeHierarchy;
 import IO;
 import List;
+
+/* === EXPORTING === */
+
+/*
+dumpM3(|project://p2-SnakesAndLadders|);
+*/
+
+@doc { Write the M3 model for an Eclipse Java project to its source directory. }
+public void dumpM3(loc project) {
+	M3 m = createM3FromEclipseProject(project);
+	loc file = m.id + "<m.id.authority>.m3.txt";
+	iprintToFile(file, m);
+}
 
 /* === DEBUGGING === */
 
