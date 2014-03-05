@@ -15,7 +15,24 @@ TO DO:
 */
 
 
-/*
+/* JHD6
+
+jhd6 = createM3FromEclipseProject(|project://jhotdraw60b1|);
+pt6 = polymorphTypes(jhd6);
+pf6 = polymorphFields(jhd6);
+
+anon1 = |java+anonymousClass:///org/jhotdraw/standard/AlignCommand/Alignment/$anonymous1|;
+
+vcl = |java+interface:///org/jhotdraw/framework/ViewChangeListener|;
+avcl = |java+anonymousClass:///org/jhotdraw/standard/AbstractTool/createViewChangeListener()/$anonymous1|;
+invert(jhd6@implements)[vcl]; // IS EMPTY!
+
+al = |java+class:///org/jhotdraw/standard/AlignCommand/Alignment|;
+whereIs(jhd6,anon1);
+
+*/
+
+/* JHD7
 
 jhd7 = createM3FromEclipseProject(|project://JHotDraw751|);
 pt7 = polymorphTypes(jhd7);
@@ -24,11 +41,6 @@ pf7 = polymorphFields(jhd7);
 ah = |java+class:///org/jhotdraw/draw/handle/AbstractHandle|;
 toh = |java+class:///org/jhotdraw/draw/handle/TextOverflowHandle|;
 afa = |java+class:///org/jhotdraw/app/action/edit/AbstractFindAction|;
-
-
-jhd6 = createM3FromEclipseProject(|project://jhotdraw60b1|);
-pt6 = polymorphTypes(jhd6);
-pf6 = polymorphFields(jhd6);
 
 */
 
